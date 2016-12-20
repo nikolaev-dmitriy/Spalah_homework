@@ -1,5 +1,5 @@
-/.idea
-/out
-*.iml
-*.class
-/.Test
+**/.idea/
+**/out/
+**/*.iml
+**/*.class
+Test/
