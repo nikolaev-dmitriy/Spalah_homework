@@ -13,6 +13,11 @@ public class Bank {
     public void addDeposit(Deposit deposit){
         this.deposits.add(deposit);
     }
+
+    public ArrayList<Deposit> getDeposits() {
+        return deposits;
+    }
+
     public ArrayList<Double> profirFromBank(int years){
         ArrayList<Double> profit=new ArrayList<Double>();
         for (Deposit deposit : this.deposits ) {

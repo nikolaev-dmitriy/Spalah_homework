@@ -14,8 +14,13 @@ public class Deposit {
         this.perc_year = perc_year;
         this.clientName = clientName;
     }
+
+    public String getClientName() {
+        return clientName;
+    }
+
     public double netProfit(int years){
-        double NetProfit=start_sum * Math.pow(1 + perc_year/100 , years ) - start_sum;
+        double NetProfit=(start_sum * Math.pow(1 + perc_year/100 , years )) - start_sum;
         double NetProfitRounded = new BigDecimal(NetProfit).setScale(2, RoundingMode.HALF_UP).doubleValue();
         return NetProfitRounded;
     }
