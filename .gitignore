@@ -1,5 +1,5 @@
-Java/**/.idea/
-Java/**/out/
-Java/**/*.iml
-Java/**/*.class
+**/.idea/
+**/out/
+**/*.iml
+**/*.class
 Test/
