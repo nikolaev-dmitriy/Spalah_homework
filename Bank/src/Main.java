@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -6,7 +8,7 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args){
-        Bank PrivateBank=new Bank("PrivateBank");
+        Bank privateBank=new Bank("PrivateBank");
         Scanner in=new Scanner(System.in);
         int i=-1;
         do{
@@ -15,17 +17,17 @@ public class Main {
             System.out.println("2.Show client's profits");
             System.out.println("0.Exit");
             i=in.nextInt();
-            menu(PrivateBank,i);
+            menu(privateBank,i);
         }while(i!=0);
     }
-    public static void menu(Bank PrivateBank,int i){
+    public static void menu(Bank privateBank,int i){
         switch (i){
             case 1:{
-                addDepositToBank(PrivateBank);
+                addDepositToBank(privateBank);
                 break;
             }
             case 2:{
-             profitsOutput(PrivateBank );
+             profitsOutput(privateBank );
                 break;
             }
         }
@@ -53,8 +55,10 @@ public class Main {
                 j++;
             }
             j=0;
+            double profit;
             for (Double userProf: userProfits) {
-                results[j]+=" earns " + userProf + " UAH during " + years + " year(s)";
+                profit = new BigDecimal(userProf).setScale(2, RoundingMode.HALF_UP).doubleValue();
+                results[j]+=" earns " + profit + " UAH during " + years + " year(s)";
                 j++;
             }
             for (String result:results ){
