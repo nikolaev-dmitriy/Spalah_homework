@@ -7,14 +7,14 @@ import java.util.Scanner;
 public class Calculator {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
-        String input = "";
         System.out.println("Start Calculator");
-        calculation(input);
+        calculation();
     }
-        public static void calculation(String input) {
-            double a;
+    public static void calculation() {
+            String input;
+            double a=0;
             double b = -1;
-            String act;
+            String act="";
             double result = 0;
             Scanner in = new Scanner(System.in);
             String[] arr = new String[3];
@@ -25,48 +25,55 @@ public class Calculator {
                     t = false;
                     break;
                 } else {
-                    arr = input.split(" ");
-                    if (arr.length == 2) {
-                        a = result;
-                        b = Double.parseDouble(arr[1]);
-                        act = arr[0];
-                    } else {
-                        result = 0;
-                        a = Double.parseDouble(arr[0]);
-                        b = Double.parseDouble(arr[2]);
-                        act = arr[1];
-                    }
-                    switch (act) {
-                        case "+": {
-                            result = a + b;
-                            break;
-                        }
-                        case "-": {
-                            result = a - b;
-                            break;
-                        }
-                        case "*": {
-                            result = a * b;
-                            break;
-                        }
-                        case "/": {
-                            result = a / b;
-                            break;
-                        }
-                        default: {
+                    parser(input,arr,a,b,act,result);
 
-                            break;
-                        }
-                    }
-                    out(result);
+                    action(act,a,b,result);
                 }
             }
-        }
-                public static void out (double result) {
+    }
+    public static void out (double result) {
                 DecimalFormat df = new DecimalFormat("#.###");
                 System.out.println("Result = " + df.format(result));
+    }
+    public static void parser(String input,String[] arr, double a,double b,String act,double result){
+                arr = input.split(" ");
+                if (arr.length == 2) {
+                    a = result;
+                    b = Double.parseDouble(arr[1]);
+                    act = arr[0];
+                } else {
+                    result = 0;
+                    a = Double.parseDouble(arr[0]);
+                    b = Double.parseDouble(arr[2]);
+                    act = arr[1];
+                }
+    }
+    public static void action(String act,double a,double b,double result){
+            switch (act) {
+                case "+": {
+                    result = a + b;
+                    break;
+                }
+                case "-": {
+                    result = a - b;
+                    break;
+                }
+                case "*": {
+                    result = a * b;
+                    break;
+                }
+                case "/": {
+                    result = a / b;
+                    break;
+                }
+                default: {
+
+                    break;
+                }
             }
-        }
+            out(result);
+    }
+}
 
 
 
